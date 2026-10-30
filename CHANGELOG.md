@@ -2,7 +2,9 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [Não lançado / Unreleased]
+## [1.0.0] - 2026-10-30
+
+Primeira versão estável, validada em produção (CapRover + Claude). / First stable release, validated in production (CapRover + Claude).
 
 ### Adicionado / Added
 - Dockerfile empacotando `google-ads-mcp==0.0.5` (PyPI), usuário não-root, volume `/data` e healthcheck.
