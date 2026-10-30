@@ -2,6 +2,10 @@
 
 🇧🇷 Português | [🇺🇸 English](README.en-US.md)
 
+[![CI](https://github.com/chr1sred/mcp-googleads-open/actions/workflows/ci.yml/badge.svg)](https://github.com/chr1sred/mcp-googleads-open/actions/workflows/ci.yml)
+[![Image](https://github.com/chr1sred/mcp-googleads-open/actions/workflows/publish.yml/badge.svg)](https://github.com/chr1sred/mcp-googleads-open/pkgs/container/mcp-googleads-open)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+
 Deploy **self-hosted** do [servidor MCP oficial do Google Ads](https://github.com/googleads/google-ads-mcp) em VPS com **CapRover** (ou Docker Compose), com HTTPS, login OAuth e tokens persistentes e criptografados.
 
 Com ele, assistentes de IA compatíveis com MCP (Claude, Claude Code, Codex, Cursor, Antigravity etc.) consultam suas contas do Google Ads em linguagem natural: *"Como foi a performance das campanhas desta semana?"*.
@@ -64,6 +68,29 @@ Cada pessoa faz login com a própria conta Google e só enxerga as contas do Goo
 5. Problemas? [docs/pt-BR/04-solucao-de-problemas.md](docs/pt-BR/04-solucao-de-problemas.md)
 
 Sem CapRover? Use o [`docker-compose.yml`](docker-compose.yml) atrás de qualquer proxy reverso com HTTPS (Traefik, Caddy, nginx).
+
+### Imagem pronta
+
+Imagem oficial deste projeto, publicada automaticamente pelo GitHub Actions (amd64 e arm64):
+
+```
+ghcr.io/chr1sred/mcp-googleads-open:latest   # última release
+ghcr.io/chr1sred/mcp-googleads-open:1.0.0    # versão fixa (recomendado)
+```
+
+No CapRover, use o **Método 6 (ImageName)** com esse endereço: sem build na VPS e deploy em segundos.
+
+## Testes
+
+Cada push roda lint (hadolint, shellcheck, actionlint) e um **smoke test** que sobe o container e valida: healthcheck, usuário não-root, metadados OAuth, `/mcp` protegido (401), registro dinâmico de cliente, criptografia e persistência do armazenamento.
+
+```bash
+# Contra a imagem local
+docker build -t mcp-googleads-open:test . && IMAGE=mcp-googleads-open:test tests/smoke-test.sh
+
+# Contra o seu deploy (só leitura)
+MCP_URL=https://google-ads-mcp.seudominio.com tests/smoke-test.sh
+```
 
 ## Variáveis de ambiente
 

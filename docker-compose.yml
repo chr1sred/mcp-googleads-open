@@ -2,8 +2,10 @@
 # Alternative to CapRover: plain Docker Compose (behind your own HTTPS reverse proxy).
 services:
   google-ads-mcp:
-    build: .
-    image: mcp-googleads-open:latest
+    # Imagem pronta / prebuilt image (recomendado / recommended):
+    image: ghcr.io/chr1sred/mcp-googleads-open:1.0.0
+    # Ou build local / or build locally: comente a linha acima e descomente / comment above, uncomment:
+    # build: .
     restart: unless-stopped
     env_file: .env
     ports:

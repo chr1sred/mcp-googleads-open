@@ -2,6 +2,10 @@
 
 [🇧🇷 Português](README.md) | 🇺🇸 English
 
+[![CI](https://github.com/chr1sred/mcp-googleads-open/actions/workflows/ci.yml/badge.svg)](https://github.com/chr1sred/mcp-googleads-open/actions/workflows/ci.yml)
+[![Image](https://github.com/chr1sred/mcp-googleads-open/actions/workflows/publish.yml/badge.svg)](https://github.com/chr1sred/mcp-googleads-open/pkgs/container/mcp-googleads-open)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+
 **Self-hosted** deployment of the [official Google Ads MCP server](https://github.com/googleads/google-ads-mcp) on a VPS with **CapRover** (or Docker Compose), with HTTPS, OAuth login and persistent, encrypted tokens.
 
 It lets MCP-compatible AI assistants (Claude, Claude Code, Codex, Cursor, Antigravity, etc.) query your Google Ads accounts in natural language: *"How did my campaigns perform this week?"*.
@@ -64,6 +68,29 @@ Each person signs in with their own Google account and only sees the Google Ads 
 5. Issues? [docs/en-US/04-troubleshooting.md](docs/en-US/04-troubleshooting.md)
 
 No CapRover? Use [`docker-compose.yml`](docker-compose.yml) behind any HTTPS reverse proxy (Traefik, Caddy, nginx).
+
+### Prebuilt image
+
+Official image for this project, published automatically by GitHub Actions (amd64 and arm64):
+
+```
+ghcr.io/chr1sred/mcp-googleads-open:latest   # latest release
+ghcr.io/chr1sred/mcp-googleads-open:1.0.0    # pinned version (recommended)
+```
+
+On CapRover, use **Method 6 (ImageName)** with that address: no build on the VPS, deploys in seconds.
+
+## Tests
+
+Every push runs linters (hadolint, shellcheck, actionlint) and a **smoke test** that starts the container and checks: healthcheck, non-root user, OAuth metadata, protected `/mcp` (401), dynamic client registration, storage encryption and persistence.
+
+```bash
+# Against a local image
+docker build -t mcp-googleads-open:test . && IMAGE=mcp-googleads-open:test tests/smoke-test.sh
+
+# Against your deployment (read-only)
+MCP_URL=https://google-ads-mcp.yourdomain.com tests/smoke-test.sh
+```
 
 ## Environment variables
 

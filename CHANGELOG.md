@@ -13,6 +13,8 @@ Primeira versão estável, validada em produção (CapRover + Claude). / First s
 - Ajustes de nginx para Streamable HTTP/SSE (`caprover/nginx-location.conf`).
 - `scripts/gen-secrets.py` para gerar a chave JWT e a chave de criptografia dos tokens.
 - Documentação completa em PT-BR e EN-US.
+- Imagem multi-arquitetura (amd64/arm64) publicada no `ghcr.io/chr1sred/mcp-googleads-open` via GitHub Actions.
+- CI com hadolint, shellcheck, actionlint e smoke test do container (`tests/smoke-test.sh`).
 
 ### Alterado / Changed
 - Docs revisados após o primeiro deploy real (CapRover + Google Workspace):

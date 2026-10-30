@@ -23,7 +23,7 @@ RUN pip install "google-ads-mcp==${GOOGLE_ADS_MCP_VERSION}" \
 
 COPY --chown=mcp:mcp scripts/healthcheck.py /usr/local/bin/healthcheck.py
 
-USER mcp
+USER 10001
 WORKDIR /home/mcp
 
 # Tokens OAuth (criptografados) ficam aqui. Mapeie para um volume persistente.

@@ -70,7 +70,13 @@ Keep the keys together with the client secret. If they change, every login must 
 
 ## 2.5 Deploy
 
-### Method 3: GitHub (recommended)
+### Method 6: prebuilt image (fastest)
+
+**Deployment tab → Method 6: Deploy via ImageName** → `ghcr.io/chr1sred/mcp-googleads-open:1.0.0` → **Deploy Now**.
+
+No build on the VPS, no token. To update, change the version and deploy again. Prefer a pinned version (`1.0.0`) over `latest`, so you know exactly what is running.
+
+### Method 3: GitHub (build on the VPS)
 
 > ⚠️ CapRover **does not save** Method 3 with empty username and password, **even for a public repository**. A token is required.
 
@@ -94,6 +100,7 @@ Keep the keys together with the client secret. If they change, every login must 
 
 | Method | When to use |
 |---|---|
+| Method 3 (above) | You forked the repo and want automatic deploys on every push |
 | CLI (`caprover deploy -a google-ads-mcp`) | You already use the CapRover CLI |
 | Tarball | No token: download the ZIP from GitHub, convert to `.tar` and upload |
 

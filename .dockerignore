@@ -7,3 +7,4 @@ client_secret*.json
 docs
 *.md
 docker-compose.yml
+tests
