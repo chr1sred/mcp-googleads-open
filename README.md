@@ -51,8 +51,8 @@ Cada pessoa faz login com a própria conta Google e só enxerga as contas do Goo
 ## Requisitos
 
 - VPS com CapRover (testado como referência: 3 vCPU, 3 GB RAM + swap; o processo usa ~170 MB)
-- Um subdomínio apontando para a VPS (ex.: `gads-mcp.seudominio.com`)
-- Projeto no Google Cloud com a **Google Ads API** ativada e nível de acesso aprovado (Explorer, Basic ou Standard)
+- Um subdomínio apontando para a VPS (no CapRover com DNS curinga, é o próprio nome do app: `google-ads-mcp.seudominio.com`)
+- Projeto no Google Cloud com a **Google Ads API** ativada no nível **Explorer** (grátis, sem faturamento)
 - Conta Google com acesso às contas do Google Ads (direto ou via MCC)
 
 ## Início rápido
@@ -88,7 +88,7 @@ Altere `GOOGLE_ADS_MCP_VERSION` no [`Dockerfile`](Dockerfile) para a versão des
 ## Segurança
 
 - O endpoint é público, mas **toda chamada exige login OAuth**.
-- Enquanto o app OAuth estiver em modo **Teste**, só os **usuários de teste** cadastrados no Google Cloud conseguem logar, o que funciona como lista de acesso.
+- Quem pode logar é definido no Google: tela de consentimento **Interna** (só a sua organização Workspace) ou **Externa em Teste** (só os usuários de teste cadastrados).
 - Os tokens ficam criptografados (Fernet) no volume `/data`. Nunca faça commit do `.env` nem de JSON de credenciais.
 - O container roda como usuário não-root.
 

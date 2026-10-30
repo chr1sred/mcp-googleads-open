@@ -51,8 +51,8 @@ Each person signs in with their own Google account and only sees the Google Ads 
 ## Requirements
 
 - VPS running CapRover (reference: 3 vCPU, 3 GB RAM + swap; the process uses ~170 MB)
-- A subdomain pointing to the VPS (e.g. `gads-mcp.yourdomain.com`)
-- A Google Cloud project with the **Google Ads API** enabled and an approved access level (Explorer, Basic or Standard)
+- A subdomain pointing to the VPS (on CapRover with wildcard DNS, it is simply the app name: `google-ads-mcp.yourdomain.com`)
+- A Google Cloud project with the **Google Ads API** enabled at **Explorer** level (free, no billing)
 - A Google account with access to the Google Ads accounts (directly or through an MCC)
 
 ## Quick start
@@ -88,7 +88,7 @@ Change `GOOGLE_ADS_MCP_VERSION` in the [`Dockerfile`](Dockerfile) to the desired
 ## Security
 
 - The endpoint is public, but **every call requires OAuth login**.
-- While the OAuth app is in **Testing** mode, only the **test users** registered in Google Cloud can sign in, which works as an access list.
+- Who can sign in is set in Google: an **Internal** consent screen (your Workspace organization only) or **External in Testing** (registered test users only).
 - Tokens are encrypted (Fernet) in the `/data` volume. Never commit `.env` or credential JSON files.
 - The container runs as a non-root user.
 

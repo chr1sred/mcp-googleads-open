@@ -3,17 +3,17 @@
 URL do servidor para todos os clientes:
 
 ```
-https://gads-mcp.seudominio.com/mcp
+https://google-ads-mcp.seudominio.com/mcp
 ```
 
-Nenhum segredo vai na configuração do cliente. No primeiro uso, o cliente abre o navegador para você logar com a conta Google (que precisa estar na lista de usuários de teste, se o app estiver em modo Teste).
+Nenhum segredo vai na configuração do cliente. No primeiro uso, o cliente abre o navegador para você logar com a conta Google. Com tela de consentimento **Interna**, qualquer conta da sua organização entra; com **Externa + Teste**, só os usuários de teste cadastrados.
 
 | Cliente | Como adicionar | Status |
 |---|---|---|
 | Claude (web/desktop/mobile) | Conector personalizado com a URL acima | 🔄 a validar |
-| Claude Code | `claude mcp add --transport http google-ads https://gads-mcp.seudominio.com/mcp` e depois `/mcp` para autenticar | 🔄 a validar |
-| Codex CLI | `codex mcp add google_ads --url https://gads-mcp.seudominio.com/mcp` e `codex mcp login google_ads` | 📄 documentado pelo Google |
-| Antigravity | `"serverUrl": "https://gads-mcp.seudominio.com/mcp"` em `mcpServers` | 📄 documentado pelo Google |
+| Claude Code | `claude mcp add --transport http google-ads https://google-ads-mcp.seudominio.com/mcp` e depois `/mcp` para autenticar | 🔄 a validar |
+| Codex CLI | `codex mcp add google_ads --url https://google-ads-mcp.seudominio.com/mcp` e `codex mcp login google_ads` | 📄 documentado pelo Google |
+| Antigravity | `"serverUrl": "https://google-ads-mcp.seudominio.com/mcp"` em `mcpServers` | 📄 documentado pelo Google |
 | Cursor / VS Code | Servidor MCP do tipo HTTP com a URL acima | 🔄 a validar |
 | n8n | Nó *MCP Client Tool* (HTTP Streamable) | 🔄 a validar |
 
@@ -21,14 +21,14 @@ Nenhum segredo vai na configuração do cliente. No primeiro uso, o cliente abre
 
 ## Claude
 
-1. Adicione um **conector personalizado** (custom connector) informando a URL `https://gads-mcp.seudominio.com/mcp`.
+1. Adicione um **conector personalizado** (custom connector) informando a URL `https://google-ads-mcp.seudominio.com/mcp`.
 2. Clique em conectar. Você será levado à tela de consentimento do Google.
 3. Autorize e volte ao Claude. As tools do Google Ads passam a aparecer na conversa.
 
 ## Claude Code
 
 ```bash
-claude mcp add --transport http google-ads https://gads-mcp.seudominio.com/mcp
+claude mcp add --transport http google-ads https://google-ads-mcp.seudominio.com/mcp
 ```
 
 Dentro do Claude Code, rode `/mcp`, escolha `google-ads` e conclua o login no navegador.
