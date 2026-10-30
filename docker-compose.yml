@@ -1,0 +1,22 @@
+# Alternativa ao CapRover: Docker Compose puro (atrás do seu proxy reverso com HTTPS).
+# Alternative to CapRover: plain Docker Compose (behind your own HTTPS reverse proxy).
+services:
+  google-ads-mcp:
+    build: .
+    image: mcp-googleads-open:latest
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - oauth-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  oauth-data:

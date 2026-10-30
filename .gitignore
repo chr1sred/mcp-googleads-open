@@ -1,0 +1,10 @@
+.env
+*.env
+!.env.example
+credentials*.json
+client_secret*.json
+google-ads.yaml
+__pycache__/
+.venv/
+venv/
+.DS_Store

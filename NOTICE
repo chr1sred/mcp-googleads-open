@@ -1,0 +1,10 @@
+mcp-googleads-open
+Copyright 2026 Cristiano Castro
+
+This project packages and deploys the Google Ads MCP Server
+(https://github.com/googleads/google-ads-mcp), Copyright Google LLC,
+licensed under the Apache License, Version 2.0. The server itself is
+installed unmodified from PyPI (package "google-ads-mcp").
+
+This project is independent and is not affiliated with, endorsed by,
+or sponsored by Google LLC. "Google Ads" is a trademark of Google LLC.

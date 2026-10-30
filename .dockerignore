@@ -1,0 +1,9 @@
+.git
+.github
+.env
+*.env
+credentials*.json
+client_secret*.json
+docs
+*.md
+docker-compose.yml
