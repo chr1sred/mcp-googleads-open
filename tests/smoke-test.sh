@@ -19,8 +19,9 @@ NAME="mcp-smoke-$$"
 VOLUME="mcp-smoke-data-$$"
 FAILS=0
 
-pass() { printf '  \033[32m✔\033[0m %s\n' "$1"; }
-fail() { printf '  \033[31m✘\033[0m %s\n' "$1"; FAILS=$((FAILS + 1)); }
+if [ -t 1 ]; then G=$'\033[32m'; R=$'\033[31m'; N=$'\033[0m'; else G=; R=; N=; fi
+pass() { printf '  %s✔%s %s\n' "$G" "$N" "$1"; }
+fail() { printf '  %s✘%s %s\n' "$R" "$N" "$1"; FAILS=$((FAILS + 1)); }
 # check "descrição" comando [args...]  -> roda o comando; sucesso = passou
 check() { local msg=$1; shift; if "$@"; then pass "$msg"; else fail "$msg"; fi; }
 # contains "texto" "padrão"   |   icontains (sem diferenciar maiúsculas)

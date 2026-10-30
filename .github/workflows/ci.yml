@@ -16,12 +16,12 @@ concurrency:
 jobs:
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Dockerfile (hadolint)
-        uses: hadolint/hadolint-action@v3.1.0
+        uses: hadolint/hadolint-action@v3.5.0
         with:
           dockerfile: Dockerfile
 
@@ -36,16 +36,26 @@ jobs:
 
   smoke-test:
     name: Build + smoke test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Build da imagem
         run: docker build -t mcp-googleads-open:test .
 
       - name: Smoke test
-        run: IMAGE=mcp-googleads-open:test bash tests/smoke-test.sh
+        shell: bash
+        run: |
+          set -o pipefail
+          {
+            echo '### Smoke test'
+            echo '```'
+            rc=0
+            IMAGE=mcp-googleads-open:test bash tests/smoke-test.sh || rc=$?
+            echo '```'
+            exit "$rc"
+          } | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Tamanho da imagem
         run: |
