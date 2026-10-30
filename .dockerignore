@@ -8,3 +8,5 @@ docs
 *.md
 docker-compose.yml
 tests
+skills
+dist

@@ -1,0 +1,27 @@
+name: Skill release asset
+
+# Anexa o ZIP da skill a cada release publicada / attaches the skill ZIP to every published release
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  attach:
+    name: Anexar google-ads-analyst.zip
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Validar e empacotar
+        run: |
+          python3 tests/validate-skill.py
+          bash scripts/package-skill.sh
+
+      - name: Enviar para a release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: gh release upload "$TAG" dist/*.zip --clobber --repo "$GITHUB_REPOSITORY"

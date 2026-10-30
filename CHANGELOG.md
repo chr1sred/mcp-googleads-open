@@ -15,6 +15,7 @@ Primeira versão estável, validada em produção (CapRover + Claude). / First s
 - Documentação completa em PT-BR e EN-US.
 - Imagem multi-arquitetura (amd64/arm64) publicada no `ghcr.io/chr1sred/mcp-googleads-open` via GitHub Actions.
 - CI com hadolint, shellcheck, actionlint e smoke test do container (`tests/smoke-test.sh`).
+- Skill `google-ads-analyst` para o Claude: descoberta de MCC, 13 receitas GAQL validadas em conta real, conversão de unidades e formato de relatório PT-BR/EN; validação no CI e ZIP anexado automaticamente a cada release.
 
 ### Alterado / Changed
 - Docs revisados após o primeiro deploy real (CapRover + Google Workspace):

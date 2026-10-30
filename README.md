@@ -66,8 +66,13 @@ Cada pessoa faz login com a própria conta Google e só enxerga as contas do Goo
 3. **CapRover** → crie o app, volume, variáveis, domínio e ajuste do nginx: [docs/pt-BR/02-caprover.md](docs/pt-BR/02-caprover.md)
 4. **Clientes MCP** → conecte o Claude, Claude Code e outros em `https://SEU-DOMINIO/mcp`: [docs/pt-BR/03-clientes-mcp.md](docs/pt-BR/03-clientes-mcp.md)
 5. Problemas? [docs/pt-BR/04-solucao-de-problemas.md](docs/pt-BR/04-solucao-de-problemas.md)
+6. **Skill para o Claude** (opcional, recomendado) → ensina o Claude a analisar as contas: [docs/pt-BR/05-skill.md](docs/pt-BR/05-skill.md)
 
 Sem CapRover? Use o [`docker-compose.yml`](docker-compose.yml) atrás de qualquer proxy reverso com HTTPS (Traefik, Caddy, nginx).
+
+### Skill `google-ads-analyst`
+
+Além do servidor, o repositório traz uma **skill para o Claude** com 13 consultas GAQL validadas em conta real, descoberta automática da MCC e um formato de relatório em PT-BR/EN. Baixe o `google-ads-analyst.zip` na [última release](https://github.com/chr1sred/mcp-googleads-open/releases/latest) e envie em **Settings → Capabilities → Skills**. Detalhes: [docs/pt-BR/05-skill.md](docs/pt-BR/05-skill.md).
 
 ### Imagem pronta
 

@@ -44,4 +44,4 @@ Which fields can I query on the "campaign" resource?
 
 Tip: include the **account ID** in the prompt when working with several accounts. If access is through an MCC, make sure `GOOGLE_ADS_LOGIN_CUSTOMER_ID` is set, or ask the assistant to use the MCC as `login_customer_id`.
 
-Next: [4. Troubleshooting](04-troubleshooting.md)
+Next: [4. Troubleshooting](04-troubleshooting.md) · [5. Claude skill](05-skill.md)

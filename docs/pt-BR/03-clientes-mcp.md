@@ -44,4 +44,4 @@ Quais campos posso consultar no recurso "campaign"?
 
 Dica: informe o **ID da conta** no prompt quando trabalhar com várias contas. Se o acesso for via MCC, garanta que `GOOGLE_ADS_LOGIN_CUSTOMER_ID` está definido ou peça ao assistente para usar o `login_customer_id` da MCC.
 
-Próximo: [4. Solução de problemas](04-solucao-de-problemas.md)
+Próximo: [4. Solução de problemas](04-solucao-de-problemas.md) · [5. Skill para o Claude](05-skill.md)
