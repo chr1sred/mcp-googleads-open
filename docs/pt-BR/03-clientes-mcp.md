@@ -10,7 +10,7 @@ Nenhum segredo vai na configuração do cliente. No primeiro uso, o cliente abre
 
 | Cliente | Como adicionar | Status |
 |---|---|---|
-| Claude (web/desktop/mobile) | Conector personalizado com a URL acima | 🔄 a validar |
+| Claude (web/desktop/mobile) | Conector personalizado com a URL acima | ✅ testado |
 | Claude Code | `claude mcp add --transport http google-ads https://google-ads-mcp.seudominio.com/mcp` e depois `/mcp` para autenticar | 🔄 a validar |
 | Codex CLI | `codex mcp add google_ads --url https://google-ads-mcp.seudominio.com/mcp` e `codex mcp login google_ads` | 📄 documentado pelo Google |
 | Antigravity | `"serverUrl": "https://google-ads-mcp.seudominio.com/mcp"` em `mcpServers` | 📄 documentado pelo Google |
